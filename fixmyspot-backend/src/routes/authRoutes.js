@@ -1,0 +1,12 @@
+import {Router} from "express";
+import {register,login,me,seedAdmin,requestPasswordReset,verifyResetOtp,resetPassword} from "../controllers/authController.js";
+import {requireAuth} from "../middleware/auth.js";
+const r=Router();
+r.post("/register",register);
+r.post("/login",login);
+r.get("/me",requireAuth,me);
+r.post("/seed-admin",seedAdmin);
+r.post("/forgot-password",requestPasswordReset);
+r.post("/verify-reset-otp",verifyResetOtp);
+r.post("/reset-password",resetPassword);
+export default r;

@@ -1,0 +1,3 @@
+import { useEffect,useState } from "react";
+import { api } from "../../services/api";
+export default function ManageUsers(){const [users,setUsers]=useState([]);useEffect(()=>{api.users().then(x=>setUsers(x.users||[])).catch(console.error)},[]);return <><section className="page-heading"><div><span className="eyebrow">ADMIN</span><h1>Manage users</h1><p>Users loaded from MongoDB.</p></div></section><div className="table-card"><table><thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Area</th><th>Reports</th></tr></thead><tbody>{users.map(u=><tr key={u.id}><td>{u.name}</td><td>{u.email}</td><td><span className="role-pill">{u.role}</span></td><td>{u.area}</td><td>{u.reports}</td></tr>)}</tbody></table></div></>;}
