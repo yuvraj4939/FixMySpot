@@ -3,5 +3,7 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  base: "/FixMySpot/",
+  base: process.env.GITHUB_ACTIONS === "true"
+    ? "/FixMySpot/"
+    : "/",
 });
